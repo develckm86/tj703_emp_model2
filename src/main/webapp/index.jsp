@@ -9,5 +9,9 @@
 </h1>
 <br/>
 <a href="hello-servlet">Hello Servlet</a>
+<hr>
+    <h2>
+        <a href="./dept/list.do">부서로 이동</a>
+    </h2>
 </body>
 </html>
