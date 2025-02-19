@@ -39,11 +39,18 @@
     <p>로그인 성공시 form 을 보이지 않게 하고 Marketing 부서 로그인 중 구현!</p>
 
     <%
-    Object deptDtoObj=request.getAttribute("deptDto");
+    Object deptDtoObj=session.getAttribute("deptDto");
+    Object msg=session.getAttribute("msg");
     %>
+    <%if(msg!=null){
+        session.removeAttribute("msg");
+    %> <script>alert("<%=msg%>");</script>
+
+    <%}%>
+
     <%if(deptDtoObj==null){%>
     <form action="./dept/login.do" method="post">
-        <p><label><input type="text" name="dept_no" value="d0001" ></label></p>
+        <p><label><input type="text" name="dept_no" value="d001" ></label></p>
         <p><label><input type="text" name="dept_name" value="Marketing" ></label></p>
         <p><button>로그인</button></p>
     </form>
@@ -52,6 +59,8 @@
     %>
     <p>
         <%=deptDto.getDeptName()%> 님 로그인 중
+        /
+        <a href="./dept/logout.do">로그아웃</a>
     </p>
     <%}%>
 

@@ -50,4 +50,12 @@ class DepartmentDaoImpTest {
 
 
     }
+
+    @Test
+    void findByDeptNoAndDeptName() throws Exception {
+        DepartmentDto dto=new DepartmentDto();
+        dto.setDeptNo("d001");
+        dto.setDeptName("Marketing");
+        System.out.println(new DepartmentDaoImp().findByDeptNoAndDeptName(dto));
+    }
 }

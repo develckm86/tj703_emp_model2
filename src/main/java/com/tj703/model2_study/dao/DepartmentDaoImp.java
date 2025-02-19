@@ -87,4 +87,21 @@ public class DepartmentDaoImp implements DepartmentDao {
         insert = ps.executeUpdate();
         return insert;
     }
+
+    @Override
+    public DepartmentDto findByDeptNoAndDeptName(DepartmentDto dept) throws Exception {
+        DepartmentDto dto = null;
+        String sql = "select * from departments where dept_no = ? and dept_name = ?";
+        ps = conn.prepareStatement(sql);
+        System.out.println(dept);
+        ps.setString(1, dept.getDeptNo());
+        ps.setString(2, dept.getDeptName());
+        rs = ps.executeQuery();
+        if(rs.next()) {
+            dto = new DepartmentDto();
+            dto.setDeptNo(rs.getString("dept_no"));
+            dto.setDeptName(rs.getString("dept_name"));
+        }
+        return dto;
+    }
 }
